@@ -13,7 +13,7 @@ let autoReviewEnabled = false;
 let isReviewing = false;
 let reviewTimeout: NodeJS.Timeout | undefined;
 
-// ── Language Detection ──
+
 const LANGUAGE_MAP: Record<string, string> = {
   python: "Python", javascript: "JavaScript", typescript: "TypeScript",
   java: "Java", cpp: "C++", c: "C", go: "Go", rust: "Rust",
@@ -42,7 +42,7 @@ function detectLanguage(document: vscode.TextDocument): string {
   return document.languageId || "Unknown";
 }
 
-// ── Score History (Progress Tracker) ──
+
 function saveScoreHistory(context: vscode.ExtensionContext, score: number, language: string) {
   const history: any[] = context.globalState.get("scoreHistory", []);
   history.push({
@@ -74,10 +74,7 @@ function calculateStreak(history: any[]): number {
 }
 
 
-// ── Groq API ──
 
-
-// ── AI Review ──
 async function getAIReview(
   context: vscode.ExtensionContext,
   code: string,
@@ -100,7 +97,7 @@ Return ONLY valid JSON array. No explanation. No markdown.`,
   return JSON.parse(cleaned);
 }
 
-// ── Auto Fix ──
+
 async function getAutoFix(
   context: vscode.ExtensionContext,
   code: string,
@@ -117,7 +114,7 @@ Return ONLY the complete fixed code. No explanation. No markdown.`,
   );
 }
 
-// ── Unit Tests ──
+
 async function getUnitTests(
   context: vscode.ExtensionContext,
   code: string,
@@ -132,7 +129,7 @@ Return ONLY the test code. No explanation.`,
   );
 }
 
-// ── Chat ──
+
 async function getChatResponse(
   context: vscode.ExtensionContext,
   code: string,
@@ -148,7 +145,7 @@ Be concise, clear and helpful.`,
   );
 }
 
-// ── Learn Concept ──
+
 async function getLearnContent(
   context: vscode.ExtensionContext,
   concept: string,
@@ -184,7 +181,7 @@ Teach me using ONLY ${language} code examples.`,
   );
 }
 
-// ── NEW: Code Explanation ──
+
 async function getCodeExplanation(
   context: vscode.ExtensionContext,
   code: string,
@@ -216,7 +213,7 @@ Format your response EXACTLY like this:
   );
 }
 
-// ── NEW: Refactor Suggestions ──
+
 async function getRefactorSuggestions(
   context: vscode.ExtensionContext,
   code: string,
@@ -249,7 +246,7 @@ Format your response EXACTLY like this:
   );
 }
 
-// ── NEW: Commit Message Generator ──
+
 async function getCommitMessage(
   context: vscode.ExtensionContext,
   code: string,
@@ -294,7 +291,7 @@ ${code.split("\n").slice(0, 50).join("\n")}`,
   );
 }
 
-// ── Apply Diagnostics ──
+
 function applyDiagnostics(editor: vscode.TextEditor, issues: any[]) {
   const diagnostics: vscode.Diagnostic[] = [];
   const document = editor.document;
@@ -316,7 +313,6 @@ function applyDiagnostics(editor: vscode.TextEditor, issues: any[]) {
   diagnosticCollection.set(document.uri, diagnostics);
 }
 
-// ── Show Panel ──
 function showPanel(context: vscode.ExtensionContext, issues: any[], editor: vscode.TextEditor) {
   const history = getScoreHistory(context);
   const streak = calculateStreak(history);
@@ -383,7 +379,7 @@ function showPanel(context: vscode.ExtensionContext, issues: any[], editor: vsco
           );
           break;
 
-        // ── NEW: Explain Code ──
+        
         case "explainCode":
           await vscode.window.withProgress(
             { location: vscode.ProgressLocation.Notification, title: "🔍 Explaining your code...", cancellable: false },
@@ -396,7 +392,7 @@ function showPanel(context: vscode.ExtensionContext, issues: any[], editor: vsco
           );
           break;
 
-        // ── NEW: Refactor ──
+        
         case "refactor":
           await vscode.window.withProgress(
             { location: vscode.ProgressLocation.Notification, title: "♻️ Generating refactor suggestions...", cancellable: false },
@@ -409,7 +405,7 @@ function showPanel(context: vscode.ExtensionContext, issues: any[], editor: vsco
           );
           break;
 
-        // ── NEW: Commit Message ──
+        
         case "commitMessage":
           await vscode.window.withProgress(
             { location: vscode.ProgressLocation.Notification, title: "📝 Generating commit message...", cancellable: false },
@@ -442,7 +438,7 @@ function showPanel(context: vscode.ExtensionContext, issues: any[], editor: vsco
   );
 }
 
-// ── Run Review ──
+
 async function runReview(context: vscode.ExtensionContext, editor: vscode.TextEditor) {
   currentCode = editor.document.getText();
   currentLanguage = detectLanguage(editor.document);
@@ -487,7 +483,7 @@ async function runReview(context: vscode.ExtensionContext, editor: vscode.TextEd
   );
 }
 
-// ── Activate ──
+
 
 async function ensureInstallationId(context: vscode.ExtensionContext) {
   let installationId = context.globalState.get<string>("installationId");

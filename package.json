@@ -2,8 +2,9 @@
   "name": "aicodereviewer-jagdeep",
   "displayName": "CodePulse AI Reviewer",
   "description": "AI-powered code review for VS Code with Groq and Gemini support, bug detection, security checks, and code quality insights.",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "publisher": "jagdeep",
+  "icon": "images/icon.png",
   "categories": ["Machine Learning", "Linters"],
   "keywords": [
     "ai",

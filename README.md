@@ -1,48 +1,41 @@
-# AI Code Reviewer
+# 🚀 CodePulse AI Reviewer
 
-AI-powered code review directly inside VS Code.
-Detects bugs, security issues and performance problems
-with real-time inline diagnostics.
+AI-powered code review extension for VS Code using **Groq & Gemini APIs**
 
-## Features
+---
 
-- AI Code Review — detects bugs, security, performance issues
-- Inline red/yellow underlines on problematic lines
-- Hover tooltips with detailed issue descriptions
-- Code quality score (0-100) with progress tracking
-- Auto Fix — one click AI-powered bug fixes
-- Unit Test Generator — AI writes tests for you
-- Code Explanation — understand any code instantly
-- Refactor Suggestions — AI suggests better patterns
-- Commit Message Generator
-- Chat with your code
-- Learn This Concept — language-specific explanations
+## 🔥 Features
+- ⚡ Instant AI-based code review
+- 🐞 Bug detection
+- 🔒 Security analysis
+- 🚀 Performance suggestions
+- ✨ Improve code quality automatically
 
-## Supported Languages
+---
 
-Python, JavaScript, TypeScript, Java, C++, C,
-Go, Rust, PHP, Ruby, Swift, Kotlin, C#, Dart
+## 📦 Install Extension
+👉 https://marketplace.visualstudio.com/items?itemName=jagdeep.CodePulse-AI-Reviewer
 
-## Getting Started
+---
 
-1. Install the extension from VS Code Marketplace
-2. Open any code file
-3. Press Ctrl+Shift+R to review
-4. Choose your AI provider on first launch
+## 🖼 Demo
 
-## AI Provider Options
+![Demo](./images/demo.png)
 
-| Option | Cost | Limit |
-|--------|------|-------|
-| Groq API Key | Free | Generous daily limit |
-| Gemini API Key | Free | 15 requests/minute |
-| Free Server | Free | 10 reviews/day |
+---
 
-## Commands
+## 🛠 Tech Stack
+- TypeScript
+- VS Code Extension API
+- Groq API
+- Gemini API
 
-- Review code: Ctrl+Shift+R
-- Setup API key: Ctrl+Shift+P → AI: Setup API Key
-- Clear review: Ctrl+Shift+P → AI: Clear Review
+---
 
-## License
-MIT
+## 👨‍💻 Author
+**Jagdeep Singh**
+
+---
+
+## ⭐ Support
+If you like this project, give it a ⭐ on GitHub!
