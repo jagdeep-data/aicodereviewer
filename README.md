@@ -21,6 +21,8 @@ AI-powered code review extension for VS Code using **Groq & Gemini APIs**
 ## 🖼 Demo
 
 ![Demo](./images/demo.png)
+![Demo 2](./images/demo2.png)
+![Demo 3](./images/demo3.png)
 
 ---
 
